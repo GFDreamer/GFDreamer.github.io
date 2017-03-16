@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="cocoapods," />
 
 
 
@@ -87,12 +87,22 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Simple">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="使用pod管理代码的好处通常在开发的过程中，大多时候，我们会处理一类相同的操作，比如对于字符串String的邮箱验证，是否为空，手机号验证，或者一些UIView的动画操作，我们为了避免写一些重复的代码，可能经过类目或者延展的形式对原有的类进行了一个扩充。还有一些是工程中一些基本的公共组件，比如城市列表，刷新控件，网络请求库或者商品的目录这种基本公共组件，在工程中好多地方需要调用，我们都可以进行封">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS 使用Cocoapods创建自己的Cocoapods公共库">
+<meta property="og:url" content="http://yoursite.com/2017/03/16/iOS-使用Cocoapods创建自己的Cocoapods公共库/index.html">
 <meta property="og:site_name" content="Simple">
+<meta property="og:description" content="使用pod管理代码的好处通常在开发的过程中，大多时候，我们会处理一类相同的操作，比如对于字符串String的邮箱验证，是否为空，手机号验证，或者一些UIView的动画操作，我们为了避免写一些重复的代码，可能经过类目或者延展的形式对原有的类进行了一个扩充。还有一些是工程中一些基本的公共组件，比如城市列表，刷新控件，网络请求库或者商品的目录这种基本公共组件，在工程中好多地方需要调用，我们都可以进行封">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1860571-a5a27ee082c2863a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1860571-49ae8f7a0e57f668.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1860571-a10b855fef01dc0a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1860571-56e7715a4f8e6ec2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1860571-363936f199b90316.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-03-16T15:16:05.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Simple">
+<meta name="twitter:title" content="iOS 使用Cocoapods创建自己的Cocoapods公共库">
+<meta name="twitter:description" content="使用pod管理代码的好处通常在开发的过程中，大多时候，我们会处理一类相同的操作，比如对于字符串String的邮箱验证，是否为空，手机号验证，或者一些UIView的动画操作，我们为了避免写一些重复的代码，可能经过类目或者延展的形式对原有的类进行了一个扩充。还有一些是工程中一些基本的公共组件，比如城市列表，刷新控件，网络请求库或者商品的目录这种基本公共组件，在工程中好多地方需要调用，我们都可以进行封">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1860571-a5a27ee082c2863a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -120,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/03/16/iOS-使用Cocoapods创建自己的Cocoapods公共库/"/>
 
 
 
 
 
-  <title> Simple </title>
+  <title> iOS 使用Cocoapods创建自己的Cocoapods公共库 | Simple </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -161,9 +171,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -280,9 +288,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -312,10 +320,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2017/03/16/iOS-使用Cocoapods创建自己的Cocoapods公共库/" itemprop="url">
-                  iOS 使用Cocoapods创建自己的Cocoapods公共库
-                </a>
+                iOS 使用Cocoapods创建自己的Cocoapods公共库
               
             
           </h1>
@@ -376,9 +381,7 @@
       
 
       
-        
-          
-            <blockquote>
+        <blockquote>
 <h2 id="使用pod管理代码的好处"><a href="#使用pod管理代码的好处" class="headerlink" title="使用pod管理代码的好处"></a>使用pod管理代码的好处</h2><p>通常在开发的过程中，大多时候，我们会处理一类相同的操作，比如对于字符串String的邮箱验证，是否为空，手机号验证，或者一些UIView的动画操作，我们为了避免写一些重复的代码，可能经过类目或者延展的形式对原有的类进行了一个扩充。还有一些是工程中一些基本的公共组件，比如城市列表，刷新控件，网络请求库或者商品的目录这种基本公共组件，在工程中好多地方需要调用，我们都可以进行封装成一个组件功能模块。为了以后方便在其他App中使用，我们可以使用Cocoapods把这些小点子，小功能，可以封装成一个pod，当下次使用的时候，只需简单配置就可以了。这一点特别是在公司开发多个项目的时候，可以很方便快速的共享公共的代码，节约开发时间，这就是为什么好多公司喜欢组件化管理代码。至于库是创建私有的还是公共的，看自己和公司要求而定，大多情况下公司的是私有库pod。本篇主要以创建公共库示例，进行阐述。</p>
 </blockquote>
 <h1 id="1-创建一个工程"><a href="#1-创建一个工程" class="headerlink" title="1. 创建一个工程"></a>1. 创建一个工程</h1><p>1.打开终端，切换到你要创建的位置的目录，我这里是桌面/desktop/pod<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd desktop/pod</div><div class="line">pod lib create LPodTest</div></pre></td></tr></table></figure></p>
@@ -417,369 +420,90 @@
 </ol>
 <p>然后重新搜索.<br><img src="http://upload-images.jianshu.io/upload_images/1860571-363936f199b90316.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="A2AA9C93-991D-4222-B70D-21ED39202AE4.png"></p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <div>
+      
+        
+
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/16/Cocoapods中Podfile文件的创建和使用/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="吕桂峰">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Simple">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/16/Cocoapods中Podfile文件的创建和使用/" itemprop="url">
-                  Cocoapods中Podfile文件的创建和使用
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-16T22:52:00+08:00">
-                2017-03-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/cocoapods/" rel="tag"># cocoapods</a>
           
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/03/16/Cocoapods中Podfile文件的创建和使用/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/16/Cocoapods中Podfile文件的创建和使用/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
         
-          
-            <h1 id="一、-Podfile-的作用"><a href="#一、-Podfile-的作用" class="headerlink" title="一、 Podfile 的作用"></a>一、 Podfile 的作用</h1><p>简单来说，Podfile文件中详细记录了xcode工程中Target对于第三方库依赖的描述，里面包含了iOS platform,source, pod name , pod version, 以及对于多Target的项目中，不同Target对pod库依赖的设置。</p>
-<h1 id="二、创建一个Podfile文件"><a href="#二、创建一个Podfile文件" class="headerlink" title="二、创建一个Podfile文件"></a>二、创建一个<code>Podfile</code>文件</h1><ul>
-<li>首先在桌面创建一个工程<code>CocoaPodsTest</code>，打开终端，切换到<code>CocoaPodsTest</code>项目的根目录下,此时还没有<code>Podfile</code>文件<br><img src="http://upload-images.jianshu.io/upload_images/1860571-87c6695fbd6799d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-01-20 上午10.26.09.png"><br>*<code>pod init</code>在终端中使用<code>pod init</code>命令可以直接产生一个<code>Podfile</code>文件<img src="http://upload-images.jianshu.io/upload_images/1860571-db54da670991a2b9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="![屏幕快照 2017-01-20 上午10.26.46.png](http://upload-images.jianshu.io/upload_images/1860571-01b9a5e82e9dce66.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-"><blockquote>
-<p>此外除了<code>pod init</code> 还可以直接在工程根目录下直接 使用<code>vim Podfile</code>命令<br>运行这个命令，如果已经存在Podfile，那么直接打开，否则将创建一个<code>Podfile</code>文件并打开。两者的区别是pod init 初始化了一些必要的代码，而直接使用<code>vim Podfile</code>的话，创建并打开的是一个空白的文档。</p>
-</blockquote>
-</li>
-</ul>
-<p>下面的是<code>pod init</code>创建的<code>Podfile</code>，而<code>vim Podfile</code>则是空白什么也没有<br><img src="http://upload-images.jianshu.io/upload_images/1860571-501b582957632055.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-01-20 上午10.55.58.png"></p>
-<h1 id="三、给工程添加依赖库"><a href="#三、给工程添加依赖库" class="headerlink" title="三、给工程添加依赖库"></a>三、给工程添加依赖库</h1><ul>
-<li>单个Target添加</li>
-<li>多Target添加， 可以共享，也可以指定每一个Target<br>具体可以参考<a href="http://guides.cocoapods.org/using/the-podfile.html" target="_blank" rel="external">Cocoapods官方的例子</a>;</li>
-</ul>
-<h1 id="四、版本号控制"><a href="#四、版本号控制" class="headerlink" title="四、版本号控制"></a>四、版本号控制</h1><ul>
-<li><code>pod &#39;AFNetworking&#39;</code>这种格式是使用最新的版本，忽略了版本的要求<br>*<code>pod &#39;AFNetworking&#39;, &#39;3.1.0&#39;</code> 这种格式是只能使用版本<code>3.1.0</code>；<br>除了以上了；两种没有版本号和指定版本号，还可以进行逻辑判断</li>
-<li><code>&#39;&gt; 0.1&#39;</code> 任何大于<code>0.1</code>的版本都可以</li>
-<li>‘&gt;= 0.1’ <code>0.1</code>以及<code>0.1</code>以上的版本<br>*<code>&#39;&lt; 0.1&#39;</code>低于<code>0.1</code>的版本</li>
-<li><code>&#39;&lt;= 0.1&#39;</code> <code>0.1</code>以及<code>0.1</code>以下的版本<br>*<code>&#39;~&gt; 0.1.2&#39;</code> 这个是指版本<code>0.1.2</code>到版本<code>0.2</code>，但不包括<code>0.2</code>版本和<code>0.2</code>以上的版本</li>
-<li><code>&#39;~&gt; 0.1&#39;</code>这个是指版本<code>0.1</code>到版本<code>1.0</code>，但不包括<code>1.0</code>版本和<code>1.0</code>以上的版本</li>
-<li><code>&#39;~&gt; 0&#39;</code>这个作用和没有写版本号作用是一样</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
       
 
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/16/Cocoapos-的使用/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="吕桂峰">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Simple">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/03/16/Cocoapods中Podfile文件的创建和使用/" rel="next" title="Cocoapods中Podfile文件的创建和使用">
+                <i class="fa fa-chevron-left"></i> Cocoapods中Podfile文件的创建和使用
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2017/03/16/Cocoapos-的使用/" itemprop="url">
-                  Cocoapos 的使用
-                </a>
-              
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-16T22:45:24+08:00">
-                2017-03-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/03/16/Cocoapos-的使用/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/16/Cocoapos-的使用/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <h1 id="一、-什么是Cocoapods"><a href="#一、-什么是Cocoapods" class="headerlink" title="一、 什么是Cocoapods"></a>一、 什么是Cocoapods</h1><p>Cocoapods 是专门为xcode设计,用来管理第三方代码库的工具；所需的第三方依赖库，需要在Podfile文件里面进行配置。</p>
-<blockquote>
-<p>许多人刚开始使用cocopods的时候，可能认为pod install 只是在首次配置自己项目的时候使用，pod update在以后使用，那么这样认为就大错特错了</p>
-</blockquote>
-<h1 id="二、-pod-install-vs-pod-update-、pod-outdated"><a href="#二、-pod-install-vs-pod-update-、pod-outdated" class="headerlink" title="二、 pod install vs. pod update 、pod outdated"></a>二、 pod install vs. pod update 、pod outdated</h1><ul>
-<li><code>pod install</code> 是用来安装一个新的<code>pods</code>依赖库，或者说<code>pod install</code> 当你想把一个<code>pods</code> 依赖移除或者添加到工程的时候使用；</li>
-<li><code>pod update</code> 仅仅是望你想要更新pods到较新版本的时候使用</li>
-<li>当运行<code>pod install</code> 命令的时候，它的操作步骤是：下载和安装新的<code>pods</code>— 在<code>Podfile.lock</code>文件写入每一个已经安装<code>pods</code>的版本号；这个文件用来追踪和锁定所安装的pods的版本号。</li>
-<li><code>pod install</code>  仅仅处理那些没有在<code>podfile.lock</code>列出的依赖库<code>pods</code>。对于已经在<code>Podfile.lock</code>文件里的<code>pods</code>,它仅仅下载在<code>Podfile.lock</code>里面锁定的版本，并不去检查是否有可用的最新版本；对于没有在<code>Podfile.lock</code>的<code>pods</code>，它会搜索和匹配在Podfile文件里面所描述的对应的版本（e.g <code>pod &#39;AFNetworking&#39;, &#39;~&gt;3.0&#39;</code>)。</li>
-<li><p><code>pod  outdated</code>命令 <code>Cocoapods</code>会列出项目中<code>Podfile.lock</code>文件里面锁定的版本具有新版本可以更新的pods。<br>这个是我的工程里面对应的Podfile， 列出了工程需要的依赖库：<br><img src="http://upload-images.jianshu.io/upload_images/1860571-de0d3fcb105dd495.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-01-12 下午5.00.42.png"><br>下面这个截图是 <code>pod outdated</code>命令后，找出了有新版本可以更新的第三方库<br><img src="http://upload-images.jianshu.io/upload_images/1860571-4df421453ed9418b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-01-12 下午5.01.16.png"><br>下面的截图是<code>Podfile.lock</code>文件中锁定的第三方库的版本，以及对应的版本号<br><img src="http://upload-images.jianshu.io/upload_images/1860571-b58f66600fd5300d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-01-12 下午5.04.12.png"></p>
-<blockquote>
-<p>对比截图二和截图三，我们可以看出，在<code>Podfile.lock</code>文件中，<code>Masonry</code>、<code>SDWebImage</code>、<code>Realm</code>这三个库锁定的版本号是比较老的版本，运行命令<code>pod outdated</code>后，就列出了可以更新的版本号。</p>
-</blockquote>
-</li>
-<li><p><code>pod update</code> 当你运行 <code>pod update podName</code>, <code>Cocoapods</code>会找出podName 可以更新的的版本（除了在Podfile.lock里面已经列出锁定的版本）， 它会根据Podfile.lock文件里面的限制条件，尽可能对升级podName到比较新的可用的版本。如果<code>pod update</code> 后面不添加<code>podName</code>的话，<code>Cocoapods</code> 会根据<code>Podfile</code>文件里面列出的<code>pods</code>,把每一个<code>pod</code>更新到相应比较新的可用的版本。</p>
-</li>
-</ul>
-<h1 id="三、-那么到底在那些场景下使用呢用呢？"><a href="#三、-那么到底在那些场景下使用呢用呢？" class="headerlink" title="三、 那么到底在那些场景下使用呢用呢？"></a>三、 那么到底在那些场景下使用呢用呢？</h1><ul>
-<li>对于<code>pod update PODNAME</code> 这个命令，仅仅是更新一个特定的<code>pod</code>(这个操作会根据<code>Podfile</code>文件的配置检测特定的<code>pod</code>是否存在可更新版本，如果就相应的进行更新）。与之相反的是命令<code>pod install</code>这个命令并不会尝试检测更新已经安装<code>pod</code>。</li>
-<li>当你在<code>Podfile</code>里面添加了新的<code>pod</code>，那么最好选择使用<code>pod install</code>，而不是选择<code>pod update</code> , 因为<code>pod install</code> 可以避免安装和 更新操作在一个线程里面进行，从而提高效率，节省安装时间，但这并不是说 <code>pod update</code> 不行，而是相对来说这种场景下用<code>pod install</code>更好一些。</li>
-<li><code>pod update</code> 命令，当你想要更新某一个特定的<code>pod</code> 或者所有的<code>pod</code>的时候是最好的选择。</li>
-</ul>
-<h1 id="四、Commit-提交-Podfile-lock"><a href="#四、Commit-提交-Podfile-lock" class="headerlink" title="四、Commit 提交 Podfile.lock"></a>四、Commit 提交 Podfile.lock</h1><p>作为一个提醒：即使你的代码管理策略中，提交代码的时候并不提交Pods文件夹到共享的代码仓库中，但是提交和上床<code>Podfile.lock</code>文件是很有必要的，否则的话，上面对于命令 <code>pod install</code>的功能解释（<code>pod install</code>可以安装锁定的相应版本）将不再适用。</p>
-<h1 id="五、适用场景举例"><a href="#五、适用场景举例" class="headerlink" title="五、适用场景举例"></a>五、适用场景举例</h1><ul>
-<li><p>阶段一：用户<code>user1</code>创建了一个工程<br><code>user1</code> 创建了一个工程，想使用pods A 、B 、C, 那么然后创建一个<code>Podfile</code>， 将对应的版本添加到Podfile里面，运行 <code>pod install</code> , 将会安装 A、B、C，我们假设此时指定使用的版本都为<code>1.0.0</code>;<br><code>Podfile.lock</code> 将会持续追踪限制安装A、B、C的版本都为<code>1.0.0</code>；</p>
-<blockquote>
-<p>此外：因为这是第一次运行<code>pod install</code>命令， 此时<code>Pods.xcodeproj</code>并不存在， 那么运行 <code>pod install</code>命令后，除了安装pods外，还会创建<code>Pods.xcodeproj</code>和<code>.xcworkspace</code>。</p>
-</blockquote>
-</li>
-<li><p>阶段2: 用户<code>user1</code> 添加了一个新的<code>pod</code><br>不久后，<code>user1</code>想添加一个 pod D到Podfile文件。<br>这时运行<code>pod install</code>之后，即使这个时候对于pod B有一个 用于维护的 <code>Released 1.1.0</code>版本，那么工程任然会保持pod B是版本<code>1.0.0</code>，因为用户user1 想要的是 pod D， 而不是其他版本的pod B。</p>
-</li>
-<li>阶段3： 用户<code>user2</code>加入工程<br>对于<code>user2</code> 加入这个团队之前从没用在这个工程工作过，他将会<code>clone</code>仓库并且<code>pod install</code>；<br><code>Podfile.lock</code>文件的内容（这个内容应该是被提交到git 仓库的）将会保证<code>user2</code>获得的pod 和user1正在使用的pod是一样版本的pod；<br>即使现在对于pod C有一个<code>1.2.0</code>可用的版本，<code>user2</code> 也只会安装使用 C <code>1.0.0</code>版本，这就要归功于<code>Podfile.lock</code>了， 因为 pod C在<code>Podfile.lock</code>中注册的版本是1.0.0，所以Podfile.lock就会锁定pod C只能安装使用1.0.0版本；</li>
-<li>阶段4： 检测新的可用pod<br>之后，user1 想知道那些pods更新了，那么可以运行<code>pod outdated</code>, <code>Cocoapods</code>将会列出有更新可用的pods, 比如 pod B 有一个<code>1.1.0</code>可用的新版本，pod C 有一个 <code>1.2.0</code>可用的新版本；<br>user1 决定更新pod B而不更新pod C， 那么运行 pod update B, 将会将 B由版本<code>1.0.0</code>更新到<code>1.1.0</code>（相应的，<code>Podfile.lock</code> 也进行更新）pod C将仍然是<code>1.0.0</code>而不是<code>1.2.0</code>；</li>
-</ul>
-<h1 id="六、在Podfile-中使用确切的版本并不能适用所有场景"><a href="#六、在Podfile-中使用确切的版本并不能适用所有场景" class="headerlink" title="六、在Podfile 中使用确切的版本并不能适用所有场景"></a>六、在Podfile 中使用确切的版本并不能适用所有场景</h1><p>一些开发者可能认为只要在Podfile文件中制定了特定的版本比如pod ‘A’, ‘1.0.0’， 就可以保证所有团队成员可以使用相同的pod 版本，其实并不是这样。<br>有一个经典的例子：如果pod A有一个pod依赖 A2，并且在pod A的<code>podspec</code>中进行了声明：<code>dependency &#39;A2&#39;, &#39;~&gt; 3.0&#39;</code>， 在这种场景下在<code>Podfile</code>文件中声明<code>pod &#39;A&#39;, &#39;1.0.0&#39;</code>确实能够保证user1和user2两者总是使用版本<code>1.0.0</code>，但是</p>
-<ul>
-<li><code>user1</code> 可以使用 pod A2 3.4.0版本(在user1使用的时候假设A2 3.4.0版本是最新的可用）</li>
-<li><code>user2</code>随后加入团队后，pod install获得的是 pod A2 3.5.0的版本（因为在<code>user2</code>的时候假设 3.5.0是可用的）<br>这就是为什么说使用<code>Podfile.lock</code>是唯一的途径让不同开发人员在不同的电脑上使用相同的pod的版本，并且要适当使用 <code>pod install</code>和 <code>pod update</code>。</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
           
           </div>
           
 
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/16/iOS-使用Cocoapods创建自己的Cocoapods公共库/"
+           data-title="iOS 使用Cocoapods创建自己的Cocoapods公共库" data-url="http://yoursite.com/2017/03/16/iOS-使用Cocoapods创建自己的Cocoapods公共库/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -799,8 +523,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -853,6 +586,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用pod管理代码的好处"><span class="nav-number">1.</span> <span class="nav-text">使用pod管理代码的好处</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-创建一个工程"><span class="nav-number"></span> <span class="nav-text">1. 创建一个工程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-填写Pod的Metadata和验证"><span class="nav-number"></span> <span class="nav-text">2.填写Pod的Metadata和验证</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-提交自己的pod"><span class="nav-number"></span> <span class="nav-text">4. 提交自己的pod</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Step-1-Tagging"><span class="nav-number"></span> <span class="nav-text">Step 1: Tagging</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Step-2-验证"><span class="nav-number"></span> <span class="nav-text">Step 2 :验证</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Step-3-提交pod-到Specs仓库"><span class="nav-number"></span> <span class="nav-text">Step 3 : 提交pod 到Specs仓库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-pod-search-检验是否可用"><span class="nav-number"></span> <span class="nav-text">5. pod search 检验是否可用</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -965,6 +714,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
